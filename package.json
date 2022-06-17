@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "addweb-ui": "^0.0.10",
+    "addweb-ui": "^0.0.12",
     "vue": "^3.2.25"
   },
   "devDependencies": {

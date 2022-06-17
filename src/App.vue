@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-200 pt-16 min-h-screen">
+  <div class="bg-gray-200 pt-16 min-h-screen bg-dark">
     <div class="w-9/12 mx-auto">
       <h4 class="uppercase text-4xl font-bold">Web Ui documentation</h4>
       <p>
@@ -159,15 +159,14 @@
         <h3 class="font-bold uppercase text-2xl">List groups</h3>
         <hr class="w-5/12" />
         <div class="p-5 space-x-5">
-          <web-list-group :items="items" @select="selectedItem">
-          </web-list-group>
+<web-list-group :items="items" @select="selectedItem">
+</web-list-group>
         </div>
 
         <h3 class="font-bold uppercase text-2xl">Dropdowns</h3>
         <hr class="w-5/12" />
         <div class="p-5 space-x-5">
-          <web-dropdown :items="items" @select="selectedItem">
-          </web-dropdown>
+          <web-dropdown :items="items" @select="selectedItem"> </web-dropdown>
         </div>
 
         <h3 class="font-bold uppercase text-2xl">App bar</h3>
@@ -189,6 +188,58 @@
             </template>
           </web-app-bar>
         </div>
+
+        <h3 class="font-bold uppercase text-2xl">Breadcrumb</h3>
+        <hr class="w-5/12" />
+        <div class="p-5 space-y-5">
+<web-breadcrumb class="border p-3">
+  <web-breadcrumb-item
+    label="Home"
+    :first="true"
+  ></web-breadcrumb-item>
+  <web-breadcrumb-item label="About"></web-breadcrumb-item>
+</web-breadcrumb>
+        </div>
+
+        <h3 class="font-bold uppercase text-2xl">Card</h3>
+        <hr class="w-5/12" />
+        <div class="p-5 space-y-5">
+          <web-card>
+            <template #subtitle>
+              <svg
+                class="fill-current text-gray-500 w-3 h-3 mr-2"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z"
+                />
+              </svg>
+              Members only
+            </template>
+            <template #title>
+              Can coffee make you a better developer?
+            </template>
+            <template #description>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Voluptatibus quia, nulla! Maiores et perferendis eaque,
+              exercitationem praesentium nihil.
+            </template>
+          </web-card>
+        </div>
+
+        <h3 class="font-bold uppercase text-2xl">Pagination</h3>
+        <hr class="w-5/12" />
+        <div class="p-5 space-y-5">
+          <span
+            ><b class="uppercase">Selected page: </b>
+            <b class="text-lg">{{ pagination.page }}</b></span
+          >
+          <web-pagination
+            class="border p-3"
+            :pagination="pagination"
+          ></web-pagination>
+        </div>
       </div>
     </div>
   </div>
@@ -205,6 +256,15 @@ const items = reactive([
   { label: "Item 5" },
   { label: "Item 6" },
 ]);
+
+let pagination = reactive({
+  total_items: 100,
+  pages: 7,
+  page: 1,
+  items: 10,
+  next_page: 2,
+  previous_page: null,
+});
 
 const menu_items = reactive([
   { label: "Documents", link: "#Docs" },
